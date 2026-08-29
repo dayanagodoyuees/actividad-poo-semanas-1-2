@@ -1,8 +1,8 @@
-from cliente_frecuente import ClienteFrecuente
-from producto import Producto
-from producto_digital import ProductoDigital
-from detalle_pedido import DetallePedido
-from pedido import Pedido
+from modelos.cliente_frecuente import ClienteFrecuente
+from modelos.producto import Producto
+from modelos.producto_digital import ProductoDigital
+from modelos.detalle_pedido import DetallePedido
+from modelos.pedido import Pedido
 
 
 cliente1 = ClienteFrecuente(

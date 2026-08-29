@@ -1,4 +1,4 @@
-from cliente import Cliente
+from modelos.cliente import Cliente
 
 
 class ClienteFrecuente(Cliente):
