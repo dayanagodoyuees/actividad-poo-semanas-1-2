@@ -24,6 +24,21 @@ class Pedido:
     def agregar_detalle(self, detalle):
         self.__detalles.append(detalle)
 
+    def calcular_total(self):
+        total = 0
+
+        for detalle in self.__detalles:
+            total += detalle.calcular_subtotal()
+
+        return total
+
+    def calcular_total_con_descuento(self):
+        total = self.calcular_total()
+
+        descuento = self.__cliente.calcularDescuento(total)
+
+        return total - descuento
+
     def mostrar_pedido(self):
         print("Número de pedido:", self.__numero)
         print("Fecha:", self.__fecha)
@@ -41,3 +56,11 @@ class Pedido:
             print("Precio unitario:", detalle.get_precio_unitario())
             print("Subtotal:", detalle.calcular_subtotal())
             print()
+
+        total = self.calcular_total()
+        descuento = self.__cliente.calcularDescuento(total)
+        total_final = self.calcular_total_con_descuento()
+
+        print("Total:", total)
+        print("Descuento:", descuento)
+        print("Total final:", total_final)

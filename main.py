@@ -1,16 +1,24 @@
-from modelos.cliente_frecuente import ClienteFrecuente
+from modelos.cliente_mayorista import ClienteMayorista
+from modelos.cliente_minorista import ClienteMinorista
 from modelos.producto import Producto
 from modelos.producto_digital import ProductoDigital
 from modelos.detalle_pedido import DetallePedido
 from modelos.pedido import Pedido
 
 
-cliente1 = ClienteFrecuente(
+cliente_mayorista = ClienteMayorista(
+    "1001",
+    "Ana Torres",
+    "0991111111",
+    "Activo"
+)
+
+
+cliente_minorista = ClienteMinorista(
     "1002",
-    "Juan Pérez",
+    "Luis Pérez",
     "0982222222",
-    "Activo",
-    10
+    "Activo"
 )
 
 
@@ -45,15 +53,30 @@ detalle2 = DetallePedido(
 )
 
 
-pedido1 = Pedido(
+pedido_mayorista = Pedido(
     "PED001",
-    "22/08/2026",
-    cliente1
+    "29/08/2026",
+    cliente_mayorista
 )
 
+pedido_mayorista.agregar_detalle(detalle1)
+pedido_mayorista.agregar_detalle(detalle2)
 
-pedido1.agregar_detalle(detalle1)
-pedido1.agregar_detalle(detalle2)
+
+pedido_minorista = Pedido(
+    "PED002",
+    "29/08/2026",
+    cliente_minorista
+)
+
+pedido_minorista.agregar_detalle(detalle1)
+pedido_minorista.agregar_detalle(detalle2)
 
 
-pedido1.mostrar_pedido()
+print("PEDIDO CLIENTE MAYORISTA")
+pedido_mayorista.mostrar_pedido()
+
+print("\n------------------------------\n")
+
+print("PEDIDO CLIENTE MINORISTA")
+pedido_minorista.mostrar_pedido()

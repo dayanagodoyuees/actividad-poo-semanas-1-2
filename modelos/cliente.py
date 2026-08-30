@@ -1,4 +1,7 @@
-class Cliente:
+from abc import ABC, abstractmethod
+
+
+class Cliente(ABC):
 
     def __init__(self, cedula, nombre, telefono, estado):
         self.__cedula = cedula
@@ -35,3 +38,7 @@ class Cliente:
         print("Nombre:", self.__nombre)
         print("Teléfono:", self.__telefono)
         print("Estado:", self.__estado)
+
+    @abstractmethod
+    def calcularDescuento(self, total):
+        pass
