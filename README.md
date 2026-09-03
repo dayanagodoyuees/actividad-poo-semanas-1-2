@@ -1,49 +1,94 @@
-# Actividad de Programación Orientada a Objetos
-
-Este proyecto fue desarrollado en Python como parte de las actividades de Programación Orientada a Objetos.
-
-Durante las primeras semanas se implementaron conceptos como clases, objetos, encapsulación, herencia y composición. En la Semana 3 se amplió la solución para aplicar clases abstractas, sobrescritura de métodos y polimorfismo.
+# Sistema de Pedidos - Programación Orientada a Objetos
 
 ## Descripción
 
-El proyecto representa un sistema sencillo de pedidos que permite trabajar con clientes y productos.
+Este proyecto consiste en un sistema sencillo de pedidos desarrollado en Python como parte de las actividades de Programación Orientada a Objetos.
 
-La clase `Cliente` se definió como una clase abstracta y establece el método `calcularDescuento()`.
+El sistema permite crear diferentes tipos de clientes, productos y pedidos. También permite agregar productos a un pedido, calcular subtotales, obtener el total y aplicar un descuento de acuerdo con el tipo de cliente.
 
-A partir de esta clase se crearon dos tipos de clientes:
+El proyecto integra los conceptos estudiados hasta la Semana 3: clases y objetos, encapsulación, herencia, composición, clases abstractas, sobrescritura de métodos y polimorfismo.
 
-- `ClienteMayorista`: aplica un descuento del 15 %.
-- `ClienteMinorista`: aplica un descuento del 5 %.
+## Objetivo
 
-Cada clase implementa su propia versión de `calcularDescuento()`, permitiendo aplicar polimorfismo.
+El objetivo del proyecto es aplicar de forma práctica los principales conceptos de Programación Orientada a Objetos estudiados durante las tres primeras semanas, mediante el desarrollo de un sistema de pedidos.
 
-La clase `Pedido` trabaja con un objeto de tipo `Cliente` y utiliza su método `calcularDescuento()` sin necesitar comprobar si el cliente es mayorista o minorista.
+## Principales funcionalidades
+
+- Crear clientes mayoristas y minoristas.
+- Crear productos normales y productos digitales.
+- Crear pedidos asociados a un cliente.
+- Agregar diferentes detalles a un pedido.
+- Calcular el subtotal de cada detalle según la cantidad y el precio unitario.
+- Calcular el total de un pedido.
+- Calcular descuentos diferentes según el tipo de cliente.
+- Calcular el total final después de aplicar el descuento.
+- Utilizar una clase abstracta `Cliente` como estructura común para los diferentes tipos de clientes.
+- Aplicar polimorfismo mediante el método `calcularDescuento()`.
 
 ## Estructura del proyecto
 
-- `modelos/cliente.py`: clase abstracta Cliente.
-- `modelos/cliente_mayorista.py`: clase ClienteMayorista.
-- `modelos/cliente_minorista.py`: clase ClienteMinorista.
-- `modelos/producto.py`: clase Producto.
-- `modelos/producto_digital.py`: clase ProductoDigital.
-- `modelos/detalle_pedido.py`: clase DetallePedido.
-- `modelos/pedido.py`: clase Pedido.
-- `main.py`: archivo principal para probar el funcionamiento del programa.
+```text
+ActividadSemana1/
+│
+├── modelos/
+│   ├── cliente.py
+│   ├── cliente_mayorista.py
+│   ├── cliente_minorista.py
+│   ├── producto.py
+│   ├── producto_digital.py
+│   ├── detalle_pedido.py
+│   └── pedido.py
+│
+├── main.py
+├── README.md
+└── .gitignore
+```
 
-## Conceptos aplicados
+La carpeta `modelos` contiene las clases utilizadas por el sistema.
 
-- Clases y objetos
-- Encapsulación
-- Getters y setters
-- Herencia
-- Composición
-- Clases abstractas
-- Sobrescritura de métodos
-- Polimorfismo
+El archivo `main.py` contiene la creación de los objetos y las pruebas necesarias para comprobar el funcionamiento del programa.
+
+## Conceptos de POO utilizados
+
+### Encapsulación
+
+Los atributos de las clases se encuentran encapsulados y se utilizan métodos getters y setters para consultar o modificar sus valores.
+
+### Herencia
+
+`ClienteMayorista` y `ClienteMinorista` heredan de la clase abstracta `Cliente`.
+
+`ProductoDigital` hereda de la clase `Producto`.
+
+### Composición
+
+Un `Pedido` contiene uno o varios objetos de tipo `DetallePedido`. Cada detalle se encuentra relacionado con un `Producto`.
+
+### Clase abstracta
+
+`Cliente` fue definida como una clase abstracta y establece el método `calcularDescuento()`, que debe ser implementado por sus clases hijas.
+
+### Polimorfismo
+
+`ClienteMayorista` y `ClienteMinorista` sobrescriben el método `calcularDescuento()`.
+
+De esta manera, un pedido puede solicitar el cálculo del descuento mediante el mismo método, pero el resultado depende del tipo real de cliente.
+
+- Cliente mayorista: descuento del 15 %.
+- Cliente minorista: descuento del 5 %.
 
 ## Ejecución
 
-Para ejecutar el programa:
+Para ejecutar el proyecto en Windows se debe tener Python instalado.
+
+Desde la carpeta principal del proyecto ejecutar:
 
 ```bash
 py main.py
+```
+
+El programa mostrará en la terminal los datos de los pedidos, sus productos, cantidades, subtotales, total, descuento aplicado y total final.
+
+## Lenguaje utilizado
+
+**Python**
