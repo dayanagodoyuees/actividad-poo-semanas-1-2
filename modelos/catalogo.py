@@ -1,4 +1,5 @@
 from modelos.producto import Producto
+from repositorios.producto_repository import ProductoRepository
 
 
 class Catalogo:
@@ -7,6 +8,17 @@ class Catalogo:
         self.__productos: list[Producto] = []
         self.__productos_por_codigo: dict[str, Producto] = {}
         self.__codigos: set[str] = set()
+
+        self.__repository = ProductoRepository()
+
+        productos_guardados = self.__repository.cargar_productos()
+
+        for producto in productos_guardados:
+            codigo = producto.get_codigo()
+
+            self.__productos.append(producto)
+            self.__productos_por_codigo[codigo] = producto
+            self.__codigos.add(codigo)
 
     def agregar_producto(self, producto):
         codigo = producto.get_codigo()
@@ -17,6 +29,8 @@ class Catalogo:
         self.__productos.append(producto)
         self.__productos_por_codigo[codigo] = producto
         self.__codigos.add(codigo)
+        
+        self.__repository.guardar_productos(self.__productos)
 
         return True
 
@@ -36,6 +50,8 @@ class Catalogo:
         producto.set_precio(precio)
         producto.set_stock(stock)
 
+        self.__repository.guardar_productos(self.__productos)
+
         return True
 
     def eliminar_producto(self, codigo):
@@ -47,5 +63,7 @@ class Catalogo:
         self.__productos.remove(producto)
         del self.__productos_por_codigo[codigo]
         self.__codigos.remove(codigo)
+
+        self.__repository.guardar_productos(self.__productos)
 
         return True
